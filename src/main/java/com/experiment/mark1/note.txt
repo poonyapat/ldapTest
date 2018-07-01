@@ -1,0 +1,12 @@
+Image image = new Image("image");
+        String path = "";
+        image.setSource(new StreamResource((StreamResource.StreamSource) () -> {
+            try {
+                byte[] bytes = new FileInputStream(path).readAllBytes();
+                return new ByteArrayInputStream(bytes);
+//                return new FileInputStream(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }, "image.jpg"));
